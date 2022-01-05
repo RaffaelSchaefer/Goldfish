@@ -15,7 +15,7 @@ public:
     template<typename type>
     static void notEqual(const std::string &, type, type);
 
-    static void version();
+    static float version();
 };
 
 template<typename type>
