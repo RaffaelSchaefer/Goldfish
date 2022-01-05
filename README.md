@@ -22,7 +22,7 @@ Just include the Goldfish header file in your project
 ### Exsample 1
 
 ```c++
-# include "libGoldfish.h"
+#include "libGoldfish.h"
 
 int main() {
     int i = 5;
@@ -34,8 +34,8 @@ int main() {
 ### Exsample 2
 
 ```c++
-# include <string>
-# include "libGoldfish.h"
+#include <string>
+#include "libGoldfish.h"
 
 int main() {
     std::string s = "Lore ipsum";
@@ -47,7 +47,7 @@ int main() {
 ### Exsample 3
 
 ```c++
-# include "libGoldfish.h"
+#include "libGoldfish.h"
 
 int main() {
     int i = 2022;
