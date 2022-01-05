@@ -8,9 +8,9 @@ private:
 protected:
 public:
 
-    static void equal(const std::string &, auto, auto);
+    static void equal(const std::string &, int , int );
 
-    static void notEqual(const std::string &, auto, auto);
+    static void notEqual(const std::string &, int , int );
 };
 
 #endif //GOLDFISH_LIBGOLDFISH_H

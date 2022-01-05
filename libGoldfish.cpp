@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-void Goldfish::equal(const std::string &testName, auto result, auto expected) {
+void Goldfish::equal(const std::string &testName, int result, int expected) {
     if (result != expected) {
         std::cout << "Test failed!: " << testName << result << " != " << expected << std::endl;
         throw std::invalid_argument("result does not align with expectation");
@@ -11,7 +11,7 @@ void Goldfish::equal(const std::string &testName, auto result, auto expected) {
     }
 }
 
-void Goldfish::notEqual(const std::string &testName, auto result, auto expected) {
+void Goldfish::notEqual(const std::string &testName, int result, int expected) {
     if (result == expected) {
         std::cout << "Test failed!: " << testName << result << " == " << expected << std::endl;
         throw std::invalid_argument("result does not align with expectation");
