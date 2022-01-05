@@ -25,6 +25,12 @@ public:
     template<typename type>
     [[maybe_unused]] static void toNotBe(const std::string &, type *, type *);
 
+    template<typename type>
+    [[maybe_unused]] static void toBeNull(const std::string &, type *);
+
+    template<typename type>
+    [[maybe_unused]] static void toBeNull(const std::string &, type);
+
     [[maybe_unused]] static float version();
 };
 
@@ -71,6 +77,24 @@ template<typename type>
         }
     } else {
         std::cout << "Test passed!: " << testName << result << " != " << expected << std::endl;
+    }
+}
+
+template<typename type>
+[[maybe_unused]] void  Goldfish::toBeNull(const std::string &testName, type *result) {
+    if (result != nullptr) {
+        throw std::invalid_argument("Test failed!: The result is not null");
+    } else {
+        std::cout << "Test passed!: The result is null";
+    }
+}
+
+template<typename type>
+[[maybe_unused]] void  Goldfish::toBeNull(const std::string &testName, type result) {
+    if (*result != nullptr) {
+        throw std::invalid_argument("Test failed!: The result is not null");
+    } else {
+        std::cout << "Test passed!: The result is null";
     }
 }
 

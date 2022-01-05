@@ -19,7 +19,7 @@ Just include the Goldfish header file in your project
 
 ## Usage/Examples
 
-### Exsample 1
+### Example 1
 
 ```c++
 #include "libGoldfish.h"
@@ -31,7 +31,7 @@ int main() {
 }
 ```
 
-### Exsample 2
+### Example 2
 
 ```c++
 #include <string>
@@ -44,7 +44,7 @@ int main() {
 }
 ```
 
-### Exsample 3
+### Example 3
 
 ```c++
 #include "libGoldfish.h"
@@ -53,7 +53,18 @@ int main() {
     int i = 2022;
     int *foo = &i;
     int *bar = foo;
-    Goldfish::toBe("Foo is the same as bar", foo, bar);
+    Goldfish::toBe("Foo is the same as bar: ", foo, bar);
+    return 0;
+}
+```
+
+### Example 4
+
+```c++
+#include "libGoldfish.h"
+
+int main() {
+    Goldfish::toBeNull("nullptr = null: ", nullptr);
     return 0;
 }
 ```

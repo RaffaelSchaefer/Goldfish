@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(Goldfish VERSION 0.0.1 DESCRIPTION "A small Unit testing library for C++")
+project(Goldfish VERSION 0.0.1 DESCRIPTION "A simple C++ library for unit testing")
 
 set(CMAKE_CXX_STANDARD 23)
 
