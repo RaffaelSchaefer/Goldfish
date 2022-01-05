@@ -8,4 +8,4 @@ set(CMAKE_BUILD_TYPE Release)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_library(Goldfish STATIC libGoldfish.cpp)
+add_library(Goldfish SHARED libGoldfish.cpp)
