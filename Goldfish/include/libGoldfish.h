@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 //Functions
 namespace Goldfish {
@@ -205,6 +206,8 @@ namespace Goldfish {
     private:
         std::string fileName;
         std::ofstream log;
+        std::time_t startTime;
+        std::time_t endTime;
     protected:
     public:
         Log(std::string = "");

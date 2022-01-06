@@ -1,24 +1,28 @@
 #include "include/libGoldfish.h"
 #include <ctime>
-#include <iomanip>
 
 Goldfish::Log::Log(std::string filename) {
-    if(filename == "") {
+    if (filename == "") {
         this->fileName = "log.md";
     } else {
-        this->fileName = filename+".md";
+        this->fileName = filename + ".md";
     }
 }
 
 [[maybe_unused]] void Goldfish::Log::start() {
     this->log.open(this->fileName);
+    this->startTime = std::time(nullptr);
+    log << "# " << this->fileName << "\n\n## Start\n\nDate: " << std::asctime(std::localtime(&this->startTime)) << "\n"
+        << "### Tests\n\n";
 }
 
-[[maybe_unused]] void Goldfish::Log::write(const std::string& input) {
+[[maybe_unused]] void Goldfish::Log::write(const std::string &input) {
     log << input << "\n\n";
 }
 
 [[maybe_unused]] void Goldfish::Log::stop() {
+    this->endTime = std::time(nullptr);
+    log << "## End\n\nTest Duration: **" << endTime - startTime << " seconds**\n\n";
     log.close();
 }
 
