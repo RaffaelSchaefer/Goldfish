@@ -5,9 +5,12 @@ A simple C++ library for unit testing with jest like syntax.
 
 ## Features
 
-- Check for duplicates.
-- Check if two pointer are pointing to the same variable.
-- Check if the value is the same as the expected ones.
+- Checking for variables 
+- Checking for pointers
+- Checking for strings
+- Checking for array
+- Logging to .md files
+- Time measurement for Test Duration
 
 ## Installation
 
@@ -84,7 +87,7 @@ int main() {
 ## Roadmap to 0.0.1 Release
 
 - Automatic array size detection for toContain, toNotContain() and their String counterpart
-- Add more Exception functions
+- Add Exception functions
 
 ## Documentation
 
