@@ -43,8 +43,6 @@ public:
     template<typename type>
     [[maybe_unused]] static void toBeLessEqualThen(const std::string &, type, type);
 
-    //TODO fix size calculation
-
     template<typename type>
     [[maybe_unused]] static void toContain(const std::string &, type *, type, int);
 

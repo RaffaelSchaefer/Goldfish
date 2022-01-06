@@ -1,7 +1,7 @@
 
 # Goldfish 🐠
 
-A simple C++ library for unit testing.
+A simple C++ library for unit testing with jest like syntax.
 
 ## Features
 
@@ -80,6 +80,14 @@ int main() {
     return 0;
 }
 ```
+
+## TO-DO List
+
+- Automatic array size detection for toContain, toNotContain() and their String counterpart
+- Logging functions for test result (.txt and .md files)
+- Exception functions
+- Mocking functions and classes
+
 
 ## Documentation
 
