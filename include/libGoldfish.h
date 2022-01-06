@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 
-class Goldfish {
+class [[maybe_unused]] Goldfish {
 private:
 protected:
 public:
@@ -30,6 +30,18 @@ public:
 
     template<typename type>
     [[maybe_unused]] static void toBeNull(const std::string &, type);
+
+    template<typename type>
+    [[maybe_unused]] static void toBeGreaterThen(const std::string &, type, type);
+
+    template<typename type>
+    [[maybe_unused]] static void toBeGreaterEqualThen(const std::string &, type, type);
+
+    template<class type>
+    [[maybe_unused]] static void toBeLessThen(const std::string &, type, type);
+
+    template<class type>
+    [[maybe_unused]] static void toBeLessEqualThen(const std::string &, type, type);
 
     [[maybe_unused]] static float version();
 };
@@ -81,7 +93,7 @@ template<typename type>
 }
 
 template<typename type>
-[[maybe_unused]] void  Goldfish::toBeNull(const std::string &testName, type *result) {
+[[maybe_unused]] void Goldfish::toBeNull(const std::string &testName, type *result) {
     if (result != nullptr) {
         throw std::invalid_argument("Test failed!: The result is not null");
     } else {
@@ -90,11 +102,61 @@ template<typename type>
 }
 
 template<typename type>
-[[maybe_unused]] void  Goldfish::toBeNull(const std::string &testName, type result) {
+[[maybe_unused]] void Goldfish::toBeNull(const std::string &testName, type result) {
     if (*result != nullptr) {
         throw std::invalid_argument("Test failed!: The result is not null");
     } else {
         std::cout << "Test passed!: The result is null";
+    }
+}
+
+template<typename type>
+[[maybe_unused]] void Goldfish::toBeGreaterThen(const std::string &testName, type result, type expected) {
+    if (result <= expected) {
+        if (result == expected) {
+            std::string out = "Test failed!: " + testName + std::to_string(result) + " = " + std::to_string(expected);
+            throw std::invalid_argument(out);
+        } else {
+            std::string out = "Test failed!: " + testName + std::to_string(result) + " < " + std::to_string(expected);
+            throw std::invalid_argument(out);
+        }
+    } else {
+        std::cout << "Test passed!: " << testName << result << " > " << expected << std::endl;
+    }
+}
+
+template<typename type>
+[[maybe_unused]] void Goldfish::toBeGreaterEqualThen(const std::string &testName, type result, type expected) {
+    if (result < expected) {
+        std::string out = "Test failed!: " + testName + std::to_string(result) + " < " + std::to_string(expected);
+        throw std::invalid_argument(out);
+    } else {
+        std::cout << "Test passed!: " << testName << result << " >= " << expected << std::endl;
+    }
+}
+
+template<typename type>
+[[maybe_unused]] void Goldfish::toBeLessThen(const std::string &testName, type result, type expected) {
+    if (result >= expected) {
+        if (result == expected) {
+            std::string out = "Test failed!: " + testName + std::to_string(result) + " = " + std::to_string(expected);
+            throw std::invalid_argument(out);
+        } else {
+            std::string out = "Test failed!: " + testName + std::to_string(result) + " > " + std::to_string(expected);
+            throw std::invalid_argument(out);
+        }
+    } else {
+        std::cout << "Test passed!: " << testName << result << " < " << expected << std::endl;
+    }
+}
+
+template<typename type>
+[[maybe_unused]] void Goldfish::toBeLessEqualThen(const std::string &testName, type result, type expected) {
+    if (result > expected) {
+        std::string out = "Test failed!: " + testName + std::to_string(result) + " > " + std::to_string(expected);
+        throw std::invalid_argument(out);
+    } else {
+        std::cout << "Test passed!: " << testName << result << " <= " << expected << std::endl;
     }
 }
 

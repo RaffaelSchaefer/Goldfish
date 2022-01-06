@@ -1,7 +1,7 @@
 
 # Goldfish 🐠
 
-A simple C++ library for unit testing
+A simple C++ library for unit testing.
 
 ## Features
 
@@ -11,7 +11,7 @@ A simple C++ library for unit testing
 
 ## Installation
 
-Just include the Goldfish header file in your project
+Just include the Goldfish header file in your project.
 
 ```c++
 # include "libGoldfish.h"
@@ -65,6 +65,18 @@ int main() {
 
 int main() {
     Goldfish::toBeNull("nullptr = null: ", nullptr);
+    return 0;
+}
+```
+
+### Example 5
+
+```c++
+#include "libGoldfish.h"
+
+int main() {
+    Goldfish::toBeGreaterThen("10 > 5", 10, 5);
+    Goldfish::toBeLessThen("5 < 10", 5, 10);
     return 0;
 }
 ```
