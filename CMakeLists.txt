@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD 23)
 
 set(CMAKE_BUILD_TYPE Release)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(Goldfish/include)
 
-add_library(Goldfish SHARED libGoldfish.cpp)
+add_library(Goldfish SHARED Goldfish/libGoldfishString.cpp Goldfish/libGoldfishUtil.cpp Goldfish/libGoldfishLogs.cpp)
 
-# add_executable(Main main.cpp)
+add_executable(Main main.cpp)
 
-# target_link_libraries(Main PRIVATE Goldfish)
+target_link_libraries(Main PRIVATE Goldfish)
