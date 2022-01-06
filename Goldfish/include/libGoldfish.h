@@ -19,6 +19,12 @@ namespace Goldfish {
 
     [[maybe_unused]] std::string toNotContainString(const std::string &, std::string *, const std::string &, int);
 
+    //Boolean functions
+
+    [[maybe_unused]] std::string toBeTrue(const std::string &, bool);
+
+    [[maybe_unused]] std::string toBeFalse(const std::string &, bool);
+
     //Util functions
 
     [[maybe_unused]] std::string version();
@@ -198,6 +204,26 @@ namespace Goldfish {
         std::cout << out << std::endl;
         return out;
     }
+
+    template<typename type>
+    std::string toBeInRange(const std::string &testName, type result, type expected, type accuracy) {
+        std::string out;
+        bool inRange = false;
+        type lowerBorder = expected - accuracy;
+        type upperBorder = expected + accuracy;
+        if (lowerBorder <= result) {
+            if(upperBorder >= result) {
+                inRange = true;
+            }
+        }
+        if (!inRange) {
+            out = "Test failed!: " + testName + "Result is not in range";
+        } else {
+            out = "Test passed!: " + testName + "Result is in range";
+        }
+        std::cout << out << std::endl;
+        return out;
+    }
 }
 
 //Classes
@@ -210,7 +236,7 @@ namespace Goldfish {
         std::time_t endTime;
     protected:
     public:
-        Log(std::string = "");
+        explicit Log(const std::string &);
 
         ~Log();
 

@@ -1,4 +1,3 @@
-
 # Goldfish 🐠
 
 A simple C++ library for unit testing with jest like syntax.
@@ -9,6 +8,7 @@ A simple C++ library for unit testing with jest like syntax.
 - Checking for pointers
 - Checking for strings
 - Checking for array
+- Checking for boolean
 - Logging to .md files
 - Time measurement for Test Duration
 
