@@ -14,7 +14,7 @@ A simple C++ library for unit testing with jest like syntax.
 Just include the Goldfish header file in your project.
 
 ```c++
-# include "libGoldfish.h"
+#include "libGoldfish.h"
 ```
 
 ## Usage/Examples
