@@ -84,10 +84,17 @@ int main() {
 }
 ```
 
-## Roadmap to 0.0.1 Release
+## Roadmap
+
+### 0.0.1 Release
 
 - Automatic array size detection for toContain, toNotContain() and their String counterpart
+
+### 0.0.2 Release
+
 - Add Exception functions
+- Return Objects
+- Test suits which can be run in threads
 
 ## Documentation
 

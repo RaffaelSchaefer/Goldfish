@@ -180,7 +180,7 @@ namespace Goldfish {
         if (!contain) {
             out = "Test failed!: The Array does not contain " + std::to_string(contains);
         } else {
-            out = "Test passed!: The Array contains " + std::to_string(contains) + std::endl;
+            out = "Test passed!: The Array contains " + std::to_string(contains);
         }
         std::cout << out << std::endl;
         return out;
@@ -206,13 +206,13 @@ namespace Goldfish {
     }
 
     template<typename type>
-    std::string toBeInRange(const std::string &testName, type result, type expected, type accuracy) {
+    [[maybe_unused]] std::string toBeInRange(const std::string &testName, type result, type expected, type accuracy) {
         std::string out;
         bool inRange = false;
         type lowerBorder = expected - accuracy;
         type upperBorder = expected + accuracy;
         if (lowerBorder <= result) {
-            if(upperBorder >= result) {
+            if (upperBorder >= result) {
                 inRange = true;
             }
         }
@@ -245,6 +245,19 @@ namespace Goldfish {
         [[maybe_unused]] void write(const std::string &);
 
         [[maybe_unused]] void stop();
+    };
+
+    class Answer {
+    private:
+    protected:
+    public:
+        std::string out;
+        bool passed;
+        std::time_t time;
+
+        Answer();
+
+        ~Answer();
     };
 }
 
