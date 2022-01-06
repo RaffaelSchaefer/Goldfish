@@ -23,7 +23,7 @@ Goldfish::toNotMatch(const std::string &testName, const std::string &result, con
 }
 
 [[maybe_unused]] void
-Goldfish::toContainString(const std::string &testName, std::string *array, const std::string& contains, int size) {
+Goldfish::toContainString(const std::string &testName, std::string *array, const std::string &contains, int size) {
     bool contain = false;
     for (int i = 0; i < size - 1; ++i) {
         if (array[i] == contains) {
@@ -39,7 +39,8 @@ Goldfish::toContainString(const std::string &testName, std::string *array, const
     }
 }
 
-[[maybe_unused]] void Goldfish::toNotContainString(const std::string &testName, std::string *array, const std::string& contains, int size) {
+[[maybe_unused]] void
+Goldfish::toNotContainString(const std::string &testName, std::string *array, const std::string &contains, int size) {
     bool contain = true;
     for (int i = 0; i < size - 1; ++i) {
         if (array[i] == contains) {
