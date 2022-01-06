@@ -81,13 +81,11 @@ int main() {
 }
 ```
 
-## TO-DO List
+## Roadmap to 0.0.1 Release
 
 - Automatic array size detection for toContain, toNotContain() and their String counterpart
 - Logging functions for test result (.txt and .md files)
-- Exception functions
-- Mocking functions and classes
-
+- Add more Exception functions
 
 ## Documentation
 
