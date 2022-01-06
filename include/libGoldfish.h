@@ -12,12 +12,12 @@ public:
     template<typename type>
     [[maybe_unused]] static void toEqual(const std::string &, type, type);
 
-    [[maybe_unused]] static void toEqualString(const std::string &, const std::string &, const std::string &);
+    [[maybe_unused]] static void toMatch(const std::string &, const std::string &, const std::string &);
 
     template<typename type>
     [[maybe_unused]] static void toNotEqual(const std::string &, type, type);
 
-    [[maybe_unused]] static void toNotEqualString(const std::string &, const std::string &, const std::string &);
+    [[maybe_unused]] static void toNotMatch(const std::string &, const std::string &, const std::string &);
 
     template<typename type>
     [[maybe_unused]] static void toBe(const std::string &, type *, type *);
@@ -37,11 +37,23 @@ public:
     template<typename type>
     [[maybe_unused]] static void toBeGreaterEqualThen(const std::string &, type, type);
 
-    template<class type>
+    template<typename type>
     [[maybe_unused]] static void toBeLessThen(const std::string &, type, type);
 
-    template<class type>
+    template<typename type>
     [[maybe_unused]] static void toBeLessEqualThen(const std::string &, type, type);
+
+    //TODO fix size calculation
+
+    template<typename type>
+    [[maybe_unused]] static void toContain(const std::string &, type *, type, int);
+
+    template<typename type>
+    [[maybe_unused]] static void toNotContain(const std::string &, type *, type, int);
+
+    [[maybe_unused]] static void toContainString(const std::string &, std::string *, const std::string&, int);
+
+    [[maybe_unused]] static void toNotContainString(const std::string &, std::string *, const std::string&, int);
 
     [[maybe_unused]] static float version();
 };
@@ -157,6 +169,40 @@ template<typename type>
         throw std::invalid_argument(out);
     } else {
         std::cout << "Test passed!: " << testName << result << " <= " << expected << std::endl;
+    }
+}
+
+template<typename type>
+[[maybe_unused]] void Goldfish::toContain(const std::string &testName, type *array, type contains, int size) {
+    bool contain = false;
+    for (int i = 0; i < size - 1; ++i) {
+        if (array[i] == contains) {
+            contain = true;
+            break;
+        }
+    }
+    if (!contain) {
+        std::string out = "Test failed!: The Array does not contain "+std::to_string(contains);
+        throw std::invalid_argument(out);
+    } else {
+        std::cout << "Test passed!: The Array contains " << contains << std::endl;
+    }
+}
+
+template<typename type>
+[[maybe_unused]] void Goldfish::toNotContain(const std::string &testName, type *array, type contains, int size) {
+    bool contain = true;
+    for (int i = 0; i < size - 1; ++i) {
+        if (array[i] == contains) {
+            contain = false;
+            break;
+        }
+    }
+    if (contain) {
+        std::string out = "Test failed!: The Array does not contain "+std::to_string(contains);
+        throw std::invalid_argument(out);
+    } else {
+        std::cout << "Test passed!: The Array contains " << contains << std::endl;
     }
 }
 

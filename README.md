@@ -39,7 +39,7 @@ int main() {
 
 int main() {
     std::string s = "Lore ipsum";
-    Goldfish::toEqualString("The Variable s equals 'Lore ipsum': ", s, "Lore ipsum");
+    Goldfish::toMatch("The Variable s equals 'Lore ipsum': ", s, "Lore ipsum");
     return 0;
 }
 ```
