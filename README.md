@@ -20,6 +20,12 @@ Just include the Goldfish header file in your project.
 #include "libGoldfish.h"
 ```
 
+And include this in your CMakeLists.txt
+
+```cmake
+add_library(Goldfish lib/Goldfish/libGoldfishAnswer.cpp lib/Goldfish/libGoldfishBoolean.cpp lib/Goldfish/libGoldfishString.cpp lib/Goldfish/libGoldfishUtil.cpp lib/Goldfish/libGoldfishLog.cpp)
+```
+
 ## Usage/Examples
 
 ### Example 1
