@@ -1,7 +1,7 @@
 #include "Goldfish/libGoldfish.h"
 #include <ctime>
 
-Goldfish::Log::Log(const std::string& filename) {
+[[maybe_unused]] Goldfish::Log::Log(const std::string& filename) {
     this->fileName = filename + ".md";
     this->startTime = std::time(nullptr);
     this->endTime = std::time(nullptr);
@@ -16,6 +16,10 @@ Goldfish::Log::Log(const std::string& filename) {
 
 [[maybe_unused]] void Goldfish::Log::write(const Goldfish::Answer &input) {
     log << input.out << "\n\n";
+}
+
+[[maybe_unused]] void Goldfish::Log::write(const Goldfish::TestSuit &input) {
+    log << input.answer.out << "\n\n";
 }
 
 [[maybe_unused]] void Goldfish::Log::write(const std::string &input) {

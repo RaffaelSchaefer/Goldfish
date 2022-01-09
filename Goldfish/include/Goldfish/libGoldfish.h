@@ -11,7 +11,7 @@
 namespace Goldfish {
     struct Answer {
         std::string out;
-        [[maybe_unused]] bool passed;
+        bool passed;
     };
 }
 
@@ -20,6 +20,9 @@ namespace Goldfish {
 
     class [[maybe_unused]] TestSuit {
     private:
+        int passedCounter;
+        int failedCounter;
+        std::time_t duration;
     protected:
     public:
         std::string name;
@@ -29,18 +32,24 @@ namespace Goldfish {
 
         [[maybe_unused]] explicit TestSuit(std::string);
 
-        [[maybe_unused]] void start();
+        [[maybe_unused]] [[maybe_unused]] void start();
 
         [[maybe_unused]] void write(const std::string &);
 
         [[maybe_unused]] void write(const Answer &);
 
-        [[maybe_unused]] void stop();
+        [[maybe_unused]] [[maybe_unused]] void stop();
+
+        [[maybe_unused]] [[nodiscard]] int getPassed() const;
+
+        [[maybe_unused]] [[nodiscard]] int getFailed() const;
+
+        [[maybe_unused]] [[nodiscard]] std::time_t getDuration() const;
 
         ~TestSuit();
     };
 
-    class Log {
+    class [[maybe_unused]] Log {
     private:
         std::string fileName;
         std::ofstream log;
@@ -48,7 +57,7 @@ namespace Goldfish {
         std::time_t endTime;
     protected:
     public:
-        explicit Log(const std::string &);
+        [[maybe_unused]] explicit Log(const std::string &);
 
         ~Log();
 
@@ -57,6 +66,8 @@ namespace Goldfish {
         [[maybe_unused]] void write(const std::string &);
 
         [[maybe_unused]] void write(const Answer &);
+
+        [[maybe_unused]] void write(const TestSuit &);
 
         [[maybe_unused]] void stop();
     };
@@ -78,7 +89,7 @@ namespace Goldfish {
 
     [[maybe_unused]] Answer toBeTrue(const std::string &, bool);
 
-    [[maybe_unused]]Answer toBeFalse(const std::string &, bool);
+    [[maybe_unused]] Answer toBeFalse(const std::string &, bool);
 
     //Util functions
 

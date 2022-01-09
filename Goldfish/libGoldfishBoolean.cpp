@@ -15,7 +15,7 @@
 
 [[maybe_unused]] Goldfish::Answer Goldfish::toBeFalse(const std::string &testName, bool result) {
     Goldfish::Answer answer;
-    if(!result) {
+    if(result) {
         answer.out = "Test failed!: "+testName+"The result is true";
         answer.passed = false;
     } else {
