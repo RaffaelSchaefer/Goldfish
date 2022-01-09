@@ -31,7 +31,7 @@ Goldfish::TestSuit::~TestSuit() = default;
 
 [[maybe_unused]] void Goldfish::TestSuit::write(const Goldfish::Answer &input) {
     this->answer.out += input.out + "\n\n";
-    if (!answer.passed) {
+    if (!input.passed) {
         failedCounter++;
     } else {
         passedCounter++;
@@ -47,6 +47,6 @@ Goldfish::TestSuit::~TestSuit() = default;
     duration = endTime - startTime;
     answer.out += "##### Results\n\n**Passed Tests**: " + std::to_string(this->passedCounter) + "\n\n**Failed Tests**: " +
                  std::to_string(this->failedCounter) + "\n\n**Success rate**: " +
-                 std::to_string((float) (passedCounter / failedCounter) * 100) + "%" + "\n\n" +
+                 std::to_string((float) (passedCounter/(failedCounter + passedCounter)) * 100) + "%" + "\n\n" +
                  "**Duration**: " + std::to_string(duration) + " seconds.";
 }
