@@ -1,4 +1,4 @@
-#include "include/libGoldfish.h"
+#include "Goldfish/libGoldfish.h"
 #include <ctime>
 
 Goldfish::Log::Log(const std::string& filename) {

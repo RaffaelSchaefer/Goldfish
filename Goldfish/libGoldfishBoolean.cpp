@@ -1,4 +1,4 @@
-#include "include/libGoldfish.h"
+#include "Goldfish/libGoldfish.h"
 
 [[maybe_unused]] Goldfish::Answer Goldfish::toBeTrue(const std::string &testName, bool result) {
     Goldfish::Answer answer;
