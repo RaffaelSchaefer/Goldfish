@@ -7,23 +7,59 @@
 #include <fstream>
 #include <ctime>
 
+//Classes
+namespace Goldfish {
+    class Answer {
+    private:
+    protected:
+    public:
+        std::string out;
+        bool passed;
+
+        Answer();
+
+        ~Answer();
+    };
+
+    class Log {
+    private:
+        std::string fileName;
+        std::ofstream log;
+        std::time_t startTime;
+        std::time_t endTime;
+    protected:
+    public:
+        explicit Log(const std::string &);
+
+        ~Log();
+
+        [[maybe_unused]] void start();
+
+        [[maybe_unused]] void write(const std::string &);
+
+        [[maybe_unused]] void write(const Answer &);
+
+        [[maybe_unused]] void stop();
+    };
+}
+
 //Functions
 namespace Goldfish {
     //String functions
 
-    [[maybe_unused]] std::string toMatch(const std::string &, const std::string &, const std::string &);
+    [[maybe_unused]] Answer toMatch(const std::string &, const std::string &, const std::string &);
 
-    [[maybe_unused]] std::string toNotMatch(const std::string &, const std::string &, const std::string &);
+    [[maybe_unused]] Answer toNotMatch(const std::string &, const std::string &, const std::string &);
 
-    [[maybe_unused]] std::string toContainString(const std::string &, std::string *, const std::string &, int);
+    [[maybe_unused]] Answer toContainString(const std::string &, std::string *, const std::string &, int);
 
-    [[maybe_unused]] std::string toNotContainString(const std::string &, std::string *, const std::string &, int);
+    [[maybe_unused]] Answer toNotContainString(const std::string &, std::string *, const std::string &, int);
 
     //Boolean functions
 
-    [[maybe_unused]] std::string toBeTrue(const std::string &, bool);
+    [[maybe_unused]] Answer toBeTrue(const std::string &, bool);
 
-    [[maybe_unused]] std::string toBeFalse(const std::string &, bool);
+    [[maybe_unused]]Answer toBeFalse(const std::string &, bool);
 
     //Util functions
 
@@ -224,41 +260,6 @@ namespace Goldfish {
         std::cout << out << std::endl;
         return out;
     }
-}
-
-//Classes
-namespace Goldfish {
-    class Log {
-    private:
-        std::string fileName;
-        std::ofstream log;
-        std::time_t startTime;
-        std::time_t endTime;
-    protected:
-    public:
-        explicit Log(const std::string &);
-
-        ~Log();
-
-        [[maybe_unused]] void start();
-
-        [[maybe_unused]] void write(const std::string &);
-
-        [[maybe_unused]] void stop();
-    };
-
-    class Answer {
-    private:
-    protected:
-    public:
-        std::string out;
-        bool passed;
-        std::time_t time;
-
-        Answer();
-
-        ~Answer();
-    };
 }
 
 #endif //GOLDFISH_LIBGOLDFISH_H

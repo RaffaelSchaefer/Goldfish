@@ -14,6 +14,10 @@ Goldfish::Log::Log(const std::string& filename) {
         << "### Tests\n\n";
 }
 
+[[maybe_unused]] void Goldfish::Log::write(const Goldfish::Answer &input) {
+    log << input.out << "\n\n";
+}
+
 [[maybe_unused]] void Goldfish::Log::write(const std::string &input) {
     log << input << "\n\n";
 }
