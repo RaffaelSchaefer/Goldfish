@@ -29,6 +29,14 @@ namespace Goldfish {
 
         [[maybe_unused]] explicit TestSuit(std::string);
 
+        [[maybe_unused]] void start();
+
+        [[maybe_unused]] void write(const std::string &);
+
+        [[maybe_unused]] void write(const Answer &);
+
+        [[maybe_unused]] void stop();
+
         ~TestSuit();
     };
 
