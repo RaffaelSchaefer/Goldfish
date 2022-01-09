@@ -23,7 +23,7 @@ Just include the Goldfish header file in your project.
 And include this in your CMakeLists.txt
 
 ```cmake
-add_library(Goldfish lib/Goldfish/libGoldfishAnswer.cpp lib/Goldfish/libGoldfishBoolean.cpp lib/Goldfish/libGoldfishString.cpp lib/Goldfish/libGoldfishUtil.cpp lib/Goldfish/libGoldfishLog.cpp)
+add_library(Goldfish SHARED Goldfish/libGoldfishString.cpp Goldfish/libGoldfishUtil.cpp Goldfish/libGoldfishLog.cpp Goldfish/libGoldfishBoolean.cpp Goldfish/libGoldfishTestSuit.cpp)
 ```
 
 ## Usage/Examples

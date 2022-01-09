@@ -7,18 +7,29 @@
 #include <fstream>
 #include <ctime>
 
+//Structs
+namespace Goldfish {
+    struct Answer {
+        std::string out;
+        [[maybe_unused]] bool passed;
+    };
+}
+
 //Classes
 namespace Goldfish {
-    class Answer {
+
+    class [[maybe_unused]] TestSuit {
     private:
     protected:
     public:
-        std::string out;
-        bool passed;
+        std::string name;
+        Answer answer;
+        std::time_t startTime;
+        std::time_t endTime;
 
-        Answer();
+        [[maybe_unused]] explicit TestSuit(std::string);
 
-        ~Answer();
+        ~TestSuit();
     };
 
     class Log {

@@ -8,4 +8,4 @@ set(CMAKE_BUILD_TYPE Release)
 
 include_directories(Goldfish/include)
 
-add_library(Goldfish SHARED Goldfish/libGoldfishString.cpp Goldfish/libGoldfishUtil.cpp Goldfish/libGoldfishLog.cpp Goldfish/libGoldfishBoolean.cpp Goldfish/libGoldfishAnswer.cpp)
+add_library(Goldfish SHARED Goldfish/libGoldfishString.cpp Goldfish/libGoldfishUtil.cpp Goldfish/libGoldfishLog.cpp Goldfish/libGoldfishBoolean.cpp Goldfish/libGoldfishTestSuit.cpp)
