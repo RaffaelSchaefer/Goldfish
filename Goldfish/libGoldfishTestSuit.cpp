@@ -45,8 +45,9 @@ Goldfish::TestSuit::~TestSuit() = default;
 [[maybe_unused]] void Goldfish::TestSuit::stop() {
     this->endTime = std::time(nullptr);
     duration = endTime - startTime;
-    answer.out += "##### Results\n\n**Passed Tests**: " + std::to_string(this->passedCounter) + "\n\n**Failed Tests**: " +
-                 std::to_string(this->failedCounter) + "\n\n**Success rate**: " +
-                 std::to_string((float) (passedCounter/(failedCounter + passedCounter)) * 100) + "%" + "\n\n" +
-                 "**Duration**: " + std::to_string(duration) + " seconds.";
+    answer.out +=
+            "##### Results\n\n**Passed Tests**: " + std::to_string(this->passedCounter) + "\n\n**Failed Tests**: " +
+            std::to_string(this->failedCounter) + "\n\n**Success rate**: " +
+            std::to_string(((float) passedCounter / ((float) failedCounter + (float) passedCounter)) * 100.0F) + "%" +
+            "\n\n" + "**Duration**: " + std::to_string(duration) + " seconds.";
 }
