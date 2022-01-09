@@ -152,12 +152,12 @@ namespace Goldfish {
                 answer.out = "Test failed!: " + testName + "The result is a duplicate of the expected value";
                 answer.passed = false;
             } else {
-                answer.out = "Test failed!: " + testName + "The result is not the same a the expected value";
-                answer.passed = false;
+                answer.out = "Test passed!: " + testName + "The result is not the same a the expected value";
+                answer.passed = true;
             }
         } else {
-            answer.out = "Test passed!: " + testName + "The result is not the same a the expected value";
-            answer.passed = true;
+            answer.out = "Test failed!: " + testName + "The result is the same a the expected value";
+            answer.passed = false;
         }
         std::cout << answer.out << std::endl;
         return answer;
@@ -260,19 +260,17 @@ namespace Goldfish {
     template<typename type>
     [[maybe_unused]] Answer toContain(const std::string &testName, type *array, type contains, int size) {
         Answer answer;
-        bool contain = false;
-        for (int i = 0; i < size - 1; ++i) {
+        answer.passed = false;
+        for (int i = 0; i < size; ++i) {
             if (array[i] == contains) {
-                contain = true;
+                answer.passed = true;
                 break;
             }
         }
-        if (!contain) {
+        if (!answer.passed) {
             answer.out = "Test failed!: The Array does not contain " + std::to_string(contains);
-            answer.passed = false;
         } else {
             answer.out = "Test passed!: The Array contains " + std::to_string(contains);
-            answer.passed = true;
         }
         std::cout << answer.out << std::endl;
         return answer;
@@ -281,19 +279,19 @@ namespace Goldfish {
     template<typename type>
     [[maybe_unused]] Answer toNotContain(const std::string &testName, type *array, type contains, int size) {
         Answer answer;
-        bool contain = true;
-        for (int i = 0; i < size - 1; ++i) {
+        answer.passed = true;
+        for (int i = 0; i < size; ++i) {
             if (array[i] == contains) {
-                contain = false;
+                answer.passed = false;
                 break;
             }
         }
-        if (contain) {
-            answer.out = "Test failed!: The Array does not contain " + std::to_string(contains);
-            answer.passed = false;
-        } else {
-            answer.out = "Test passed!: The Array contains " + std::to_string(contains);
+        if (answer.passed) {
+            answer.out = "Test passed!: The Array does not contain " + std::to_string(contains);
             answer.passed = true;
+        } else {
+            answer.out = "Test failed!: The Array contains " + std::to_string(contains);
+            answer.passed = false;
         }
         std::cout << answer.out << std::endl;
         return answer;

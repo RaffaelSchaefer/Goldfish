@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(Goldfish VERSION 0.0.1 DESCRIPTION "A simple C++ library for unit testing")
+project(Goldfish VERSION 0.0.2 DESCRIPTION "A simple C++ library for unit testing")
 
 set(CMAKE_CXX_STANDARD 23)
 
@@ -10,6 +10,6 @@ include_directories(Goldfish/include)
 
 add_library(Goldfish SHARED Goldfish/libGoldfishString.cpp Goldfish/libGoldfishUtil.cpp Goldfish/libGoldfishLog.cpp Goldfish/libGoldfishBoolean.cpp Goldfish/libGoldfishTestSuit.cpp)
 
-add_executable(Main main.cpp)
+add_executable(Test tests/test.cpp)
 
-target_link_libraries(Main PRIVATE Goldfish)
+target_link_libraries(Test PRIVATE Goldfish)

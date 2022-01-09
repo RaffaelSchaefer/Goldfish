@@ -32,20 +32,18 @@ Goldfish::toNotMatch(const std::string &testName, const std::string &result, con
 
 [[maybe_unused]] Goldfish::Answer
 Goldfish::toContainString(const std::string &testName, std::string *array, const std::string &contains, int size) {
-    bool contain = false;
     Goldfish::Answer answer;
-    for (int i = 0; i < size - 1; ++i) {
+    answer.passed = false;
+    for (int i = 0; i < size; ++i) {
         if (array[i] == contains) {
-            contain = true;
+            answer.passed = true;
             break;
         }
     }
-    if (!contain) {
+    if (!answer.passed) {
         answer.out = "Test failed!: The Array does not contain " + contains;
-        answer.passed = false;
     } else {
         answer.out = "Test passed!: The Array contains " + contains;
-        answer.passed = true;
     }
     std::cout << answer.out << std::endl;
     return answer;
@@ -53,15 +51,15 @@ Goldfish::toContainString(const std::string &testName, std::string *array, const
 
 [[maybe_unused]] Goldfish::Answer
 Goldfish::toNotContainString(const std::string &testName, std::string *array, const std::string &contains, int size) {
-    bool contain = true;
     Goldfish::Answer answer;
-    for (int i = 0; i < size - 1; ++i) {
+    answer.passed = false;
+    for (int i = 0; i < size; ++i) {
         if (array[i] == contains) {
-            contain = false;
+            answer.passed = true;
             break;
         }
     }
-    if (!contain) {
+    if (!answer.passed) {
         answer.out = "Test passed!: The Array does not contain " + contains;
         answer.passed = true;
     } else {

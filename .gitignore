@@ -3,4 +3,4 @@ cmake-build-debug
 .idea
 .vscode
 #Files
-main.cpp
+tests/test.cpp
