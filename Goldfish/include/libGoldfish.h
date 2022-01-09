@@ -68,144 +68,168 @@ namespace Goldfish {
     //Templates functions
 
     template<typename type>
-    [[maybe_unused]] std::string toEqual(const std::string &testName, type result, type expected) {
-        std::string out;
+    [[maybe_unused]] Answer toEqual(const std::string &testName, type result, type expected) {
+        Answer answer;
         if (result != expected) {
-            out = "Test failed!: " + testName + std::to_string(result) + " != " + std::to_string(expected);
+            answer.out = "Test failed!: " + testName + std::to_string(result) + " != " + std::to_string(expected);
+            answer.passed = false;
         } else {
-            out = "Test passed!: " + testName + std::to_string(result) + " = " + std::to_string(expected);
+            answer.out = "Test passed!: " + testName + std::to_string(result) + " = " + std::to_string(expected);
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toNotEqual(const std::string &testName, type result, type expected) {
-        std::string out;
+    [[maybe_unused]] Answer toNotEqual(const std::string &testName, type result, type expected) {
+        Answer answer;
         if (result == expected) {
-            out = "Test failed!: " + testName + std::to_string(result) + " == " + std::to_string(expected);
+            answer.out = "Test failed!: " + testName + std::to_string(result) + " == " + std::to_string(expected);
+            answer.passed = false;
         } else {
-            out = "Test passed!: " + testName + std::to_string(result) + " != " + std::to_string(expected);
+            answer.out = "Test passed!: " + testName + std::to_string(result) + " != " + std::to_string(expected);
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toBe(const std::string &testName, type *result, type *expected) {
-        std::string out;
+    [[maybe_unused]] Answer toBe(const std::string &testName, type *result, type *expected) {
+        Answer answer;
         if (result != expected) {
             if (*result == *expected) {
-                out = "Test failed!: " + testName + "The result is a duplicate of the expected value";
+                answer.out = "Test failed!: " + testName + "The result is a duplicate of the expected value";
+                answer.passed = false;
             } else {
-                out = "Test failed!: " + testName + "The result is not the same a the expected value";
+                answer.out = "Test failed!: " + testName + "The result is not the same a the expected value";
+                answer.passed = false;
             }
         } else {
-            out = "Test passed!: " + testName + "The result is the same a the expected value";
+            answer.out = "Test passed!: " + testName + "The result is the same a the expected value";
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toNotBe(const std::string &testName, type *result, type *expected) {
-        std::string out;
+    [[maybe_unused]] Answer toNotBe(const std::string &testName, type *result, type *expected) {
+        Answer answer;
         if (result != expected) {
             if (*result == *expected) {
-                out = "Test failed!: " + testName + "The result is a duplicate of the expected value";
+                answer.out = "Test failed!: " + testName + "The result is a duplicate of the expected value";
+                answer.passed = false;
             } else {
-                out = "Test failed!: " + testName + "The result is not the same a the expected value";
+                answer.out = "Test failed!: " + testName + "The result is not the same a the expected value";
+                answer.passed = false;
             }
         } else {
-            out = "Test passed!: " + testName + "The result is not the same a the expected value";
+            answer.out = "Test passed!: " + testName + "The result is not the same a the expected value";
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toBeNull(const std::string &testName, type *result) {
-        std::string out;
+    [[maybe_unused]] Answer toBeNull(const std::string &testName, type *result) {
+        Answer answer;
         if (result != nullptr) {
-            out = "Test failed!: The result is not null";
+            answer.out = "Test failed!: The result is not null";
+            answer.passed = false;
         } else {
-            out = "Test passed!: The result is null";
+            answer.out = "Test passed!: The result is null";
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toBeNull(const std::string &testName, type result) {
-        std::string out;
+    [[maybe_unused]] Answer toBeNull(const std::string &testName, type result) {
+        Answer answer;
         if (result != nullptr) {
-            out = "Test failed!: The result is not null";
+            answer.out = "Test failed!: The result is not null";
+            answer.passed = false;
         } else {
-            out = "Test passed!: The result is null";
+            answer.out = "Test passed!: The result is null";
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toBeGreaterThen(const std::string &testName, type result, type expected) {
-        std::string out;
+    [[maybe_unused]] Answer toBeGreaterThen(const std::string &testName, type result, type expected) {
+        Answer answer;
         if (result <= expected) {
             if (result == expected) {
-                out = "Test failed!: " + testName + std::to_string(result) + " = " + std::to_string(expected);
+                answer.out = "Test failed!: " + testName + std::to_string(result) + " = " + std::to_string(expected);
+                answer.passed = false;
             } else {
-                out = "Test failed!: " + testName + std::to_string(result) + " < " + std::to_string(expected);
+                answer.out = "Test failed!: " + testName + std::to_string(result) + " < " + std::to_string(expected);
+                answer.passed = false;
             }
         } else {
-            out = "Test passed!: " + testName + std::to_string(result) + " > " + std::to_string(expected);
+            answer.out = "Test passed!: " + testName + std::to_string(result) + " > " + std::to_string(expected);
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toBeGreaterEqualThen(const std::string &testName, type result, type expected) {
-        std::string out;
+    [[maybe_unused]] Answer toBeGreaterEqualThen(const std::string &testName, type result, type expected) {
+        Answer answer;
         if (result < expected) {
-            out = "Test failed!: " + testName + std::to_string(result) + " < " + std::to_string(expected);
+            answer.out = "Test failed!: " + testName + std::to_string(result) + " < " + std::to_string(expected);
+            answer.passed = false;
         } else {
-            out = "Test passed!: " + testName + std::to_string(result) + " >= " + std::to_string(expected);
+            answer.out = "Test passed!: " + testName + std::to_string(result) + " >= " + std::to_string(expected);
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toBeLessThen(const std::string &testName, type result, type expected) {
-        std::string out;
+    [[maybe_unused]] Answer toBeLessThen(const std::string &testName, type result, type expected) {
+        Answer answer;
         if (result >= expected) {
             if (result == expected) {
-                out = "Test failed!: " + testName + std::to_string(result) + " = " + std::to_string(expected);
+                answer.out = "Test failed!: " + testName + std::to_string(result) + " = " + std::to_string(expected);
+                answer.passed = false;
             } else {
-                out = "Test failed!: " + testName + std::to_string(result) + " > " + std::to_string(expected);
+                answer.out = "Test failed!: " + testName + std::to_string(result) + " > " + std::to_string(expected);
+                answer.passed = false;
             }
         } else {
-            out = "Test passed!: " + testName + std::to_string(result) + " < " + std::to_string(expected);
+            answer.out = "Test passed!: " + testName + std::to_string(result) + " < " + std::to_string(expected);
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toBeLessEqualThen(const std::string &testName, type result, type expected) {
-        std::string out;
+    [[maybe_unused]] Answer toBeLessEqualThen(const std::string &testName, type result, type expected) {
+        Answer answer;
         if (result > expected) {
-            out = "Test failed!: " + testName + std::to_string(result) + " > " + std::to_string(expected);
+            answer.out = "Test failed!: " + testName + std::to_string(result) + " > " + std::to_string(expected);
+            answer.passed = false;
         } else {
-            out = "Test passed!: " + testName + std::to_string(result) + " <= " + std::to_string(expected);
+            answer.out = "Test passed!: " + testName + std::to_string(result) + " <= " + std::to_string(expected);
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toContain(const std::string &testName, type *array, type contains, int size) {
-        std::string out;
+    [[maybe_unused]] Answer toContain(const std::string &testName, type *array, type contains, int size) {
+        Answer answer;
         bool contain = false;
         for (int i = 0; i < size - 1; ++i) {
             if (array[i] == contains) {
@@ -214,17 +238,19 @@ namespace Goldfish {
             }
         }
         if (!contain) {
-            out = "Test failed!: The Array does not contain " + std::to_string(contains);
+            answer.out = "Test failed!: The Array does not contain " + std::to_string(contains);
+            answer.passed = false;
         } else {
-            out = "Test passed!: The Array contains " + std::to_string(contains);
+            answer.out = "Test passed!: The Array contains " + std::to_string(contains);
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toNotContain(const std::string &testName, type *array, type contains, int size) {
-        std::string out;
+    [[maybe_unused]] Answer toNotContain(const std::string &testName, type *array, type contains, int size) {
+        Answer answer;
         bool contain = true;
         for (int i = 0; i < size - 1; ++i) {
             if (array[i] == contains) {
@@ -233,17 +259,19 @@ namespace Goldfish {
             }
         }
         if (contain) {
-            out = "Test failed!: The Array does not contain " + std::to_string(contains);
+            answer.out = "Test failed!: The Array does not contain " + std::to_string(contains);
+            answer.passed = false;
         } else {
-            out = "Test passed!: The Array contains " + std::to_string(contains);
+            answer.out = "Test passed!: The Array contains " + std::to_string(contains);
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 
     template<typename type>
-    [[maybe_unused]] std::string toBeInRange(const std::string &testName, type result, type expected, type accuracy) {
-        std::string out;
+    [[maybe_unused]] Answer toBeInRange(const std::string &testName, type result, type expected, type accuracy) {
+        Answer answer;
         bool inRange = false;
         type lowerBorder = expected - accuracy;
         type upperBorder = expected + accuracy;
@@ -253,12 +281,36 @@ namespace Goldfish {
             }
         }
         if (!inRange) {
-            out = "Test failed!: " + testName + "Result is not in range";
+            answer.out = "Test failed!: " + testName + "Result is not in range";
+            answer.passed = false;
         } else {
-            out = "Test passed!: " + testName + "Result is in range";
+            answer.out = "Test passed!: " + testName + "Result is in range";
+            answer.passed = true;
         }
-        std::cout << out << std::endl;
-        return out;
+        std::cout << answer.out << std::endl;
+        return answer;
+    }
+
+    template<typename type>
+    [[maybe_unused]] Answer toBeNotInRange(const std::string &testName, type result, type expected, type accuracy) {
+        Answer answer;
+        bool inRange = false;
+        type lowerBorder = expected - accuracy;
+        type upperBorder = expected + accuracy;
+        if (lowerBorder <= result) {
+            if (upperBorder >= result) {
+                inRange = true;
+            }
+        }
+        if (inRange) {
+            answer.out = "Test failed!: " + testName + "Result is in range";
+            answer.passed = false;
+        } else {
+            answer.out = "Test passed!: " + testName + "Result is not in range";
+            answer.passed = true;
+        }
+        std::cout << answer.out << std::endl;
+        return answer;
     }
 }
 
