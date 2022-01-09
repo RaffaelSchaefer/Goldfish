@@ -1,4 +1,4 @@
-#include "include/libGoldfish.h"
+#include "Goldfish/libGoldfish.h"
 #include <ctime>
 
 Goldfish::Log::Log(const std::string& filename) {
@@ -12,6 +12,10 @@ Goldfish::Log::Log(const std::string& filename) {
     this->startTime = std::time(nullptr);
     log << "# " << this->fileName << "\n\n## Start\n\nDate: " << std::asctime(std::localtime(&this->startTime)) << "\n"
         << "### Tests\n\n";
+}
+
+[[maybe_unused]] void Goldfish::Log::write(const Goldfish::Answer &input) {
+    log << input.out << "\n\n";
 }
 
 [[maybe_unused]] void Goldfish::Log::write(const std::string &input) {

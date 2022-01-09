@@ -17,7 +17,7 @@ A simple C++ library for unit testing with jest like syntax.
 Just include the Goldfish header file in your project.
 
 ```c++
-#include "libGoldfish.h"
+#include "Goldfish/libGoldfish.h"
 ```
 
 And include this in your CMakeLists.txt
@@ -95,7 +95,6 @@ int main() {
 ### 0.0.2 Release
 
 - Add Exception functions
-- Return Objects
 - Test suits which can be run in threads
 
 ## Documentation

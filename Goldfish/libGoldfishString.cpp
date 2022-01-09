@@ -1,35 +1,39 @@
-#include "include/libGoldfish.h"
+#include "Goldfish/libGoldfish.h"
 #include <iostream>
 #include <string>
 
-[[maybe_unused]] std::string
+[[maybe_unused]] Goldfish::Answer
 Goldfish::toMatch(const std::string &testName, const std::string &result, const std::string &expected) {
-    std::string out;
+    Goldfish::Answer answer;
     if (result != expected) {
-        out = "Test failed!: " + testName + result + " != " + expected;
+        answer.out = "Test failed!: " + testName + result + " != " + expected;
+        answer.passed = false;
     } else {
-        out = "Test passed!: " + testName + result + " = " + expected;
+        answer.out = "Test passed!: " + testName + result + " = " + expected;
+        answer.passed = true;
     }
-    std::cout << out << std::endl;
-    return out;
+    std::cout << answer.out << std::endl;
+    return answer;
 }
 
-[[maybe_unused]] std::string
+[[maybe_unused]] Goldfish::Answer
 Goldfish::toNotMatch(const std::string &testName, const std::string &result, const std::string &expected) {
-    std::string out;
+    Goldfish::Answer answer;
     if (result == expected) {
-        out = "Test failed!: " + testName + result + " = " + expected;
+        answer.out = "Test failed!: " + testName + result + " = " + expected;
+        answer.passed = false;
     } else {
-        out = "Test passed!: " + testName + result + " != " + expected;
+        answer.out = "Test passed!: " + testName + result + " != " + expected;
+        answer.passed = true;
     }
-    std::cout << out << std::endl;
-    return out;
+    std::cout << answer.out << std::endl;
+    return answer;
 }
 
-[[maybe_unused]] std::string
+[[maybe_unused]] Goldfish::Answer
 Goldfish::toContainString(const std::string &testName, std::string *array, const std::string &contains, int size) {
     bool contain = false;
-    std::string out;
+    Goldfish::Answer answer;
     for (int i = 0; i < size - 1; ++i) {
         if (array[i] == contains) {
             contain = true;
@@ -37,18 +41,20 @@ Goldfish::toContainString(const std::string &testName, std::string *array, const
         }
     }
     if (!contain) {
-        out = "Test failed!: The Array does not contain " + contains;
+        answer.out = "Test failed!: The Array does not contain " + contains;
+        answer.passed = false;
     } else {
-        out = "Test passed!: The Array contains " + contains;
+        answer.out = "Test passed!: The Array contains " + contains;
+        answer.passed = true;
     }
-    std::cout << out << std::endl;
-    return out;
+    std::cout << answer.out << std::endl;
+    return answer;
 }
 
-[[maybe_unused]] std::string
+[[maybe_unused]] Goldfish::Answer
 Goldfish::toNotContainString(const std::string &testName, std::string *array, const std::string &contains, int size) {
     bool contain = true;
-    std::string out;
+    Goldfish::Answer answer;
     for (int i = 0; i < size - 1; ++i) {
         if (array[i] == contains) {
             contain = false;
@@ -56,10 +62,12 @@ Goldfish::toNotContainString(const std::string &testName, std::string *array, co
         }
     }
     if (!contain) {
-        out = "Test passed!: The Array does not contain " + contains;
+        answer.out = "Test passed!: The Array does not contain " + contains;
+        answer.passed = true;
     } else {
-        out = "Test failed!: The Array contains " + contains;
+        answer.out = "Test failed!: The Array contains " + contains;
+        answer.passed = false;
     }
-    std::cout << out << std::endl;
-    return out;
+    std::cout << answer.out << std::endl;
+    return answer;
 }
