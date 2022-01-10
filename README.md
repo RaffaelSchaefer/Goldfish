@@ -96,6 +96,16 @@ int main() {
 
 - Add Exception functions
 - Test suits which can be run in threads
+- .dll binaries
+- Exception tests
+
+### 0.0.3 Release
+
+- Time Tests
+- Benchmarks
+- Performance Diagrams
+- Mocking classes
+- Api tests
 
 ## Documentation
 
