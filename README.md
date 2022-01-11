@@ -94,10 +94,8 @@ int main() {
 
 ### 0.0.2 Release
 
-- Add Exception functions
-- Test suits which can be run in threads
-- .dll binaries
-- Exception tests
+- Test suits
+- binaries files
 
 ### 0.0.3 Release
 
@@ -106,6 +104,7 @@ int main() {
 - Performance Diagrams
 - Mocking classes
 - Api tests
+- Add Exception functions
 
 ## Documentation
 
