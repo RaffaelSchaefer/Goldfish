@@ -17,21 +17,17 @@ A simple C++ library for unit testing with jest like syntax.
 Just include the Goldfish header file in your project.
 
 ```c++
-#include "Goldfish/libGoldfish.h"
+#include <Goldfish/libGoldfish.h>
 ```
 
-And include this in your CMakeLists.txt
-
-```cmake
-add_library(Goldfish SHARED Goldfish/libGoldfishString.cpp Goldfish/libGoldfishUtil.cpp Goldfish/libGoldfishLog.cpp Goldfish/libGoldfishBoolean.cpp Goldfish/libGoldfishTestSuit.cpp)
-```
+And use the include CMakeLists.txt as reference.
 
 ## Usage/Examples
 
 ### Example 1
 
 ```c++
-#include "libGoldfish.h"
+#include <Goldfish/libGoldfish.h>
 
 int main() {
     int i = 5;
@@ -44,7 +40,7 @@ int main() {
 
 ```c++
 #include <string>
-#include "libGoldfish.h"
+#include <Goldfish/libGoldfish.h>
 
 int main() {
     std::string s = "Lore ipsum";
@@ -56,7 +52,7 @@ int main() {
 ### Example 3
 
 ```c++
-#include "libGoldfish.h"
+#include <Goldfish/libGoldfish.h>
 
 int main() {
     int i = 2022;
@@ -70,7 +66,7 @@ int main() {
 ### Example 4
 
 ```c++
-#include "libGoldfish.h"
+#include <Goldfish/libGoldfish.h>
 
 int main() {
     Goldfish::toBeNull("nullptr = null: ", nullptr);
@@ -81,7 +77,7 @@ int main() {
 ### Example 5
 
 ```c++
-#include "libGoldfish.h"
+#include <Goldfish/libGoldfish.h>
 
 int main() {
     Goldfish::toBeGreaterThen("10 > 5", 10, 5);
@@ -91,11 +87,6 @@ int main() {
 ```
 
 ## Roadmap
-
-### 0.0.2 Release
-
-- Test suits
-- binaries files
 
 ### 0.0.3 Release
 
