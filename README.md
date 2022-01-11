@@ -10,6 +10,7 @@ A simple C++ library for unit testing with jest like syntax.
 - Checking for array
 - Checking for boolean
 - Logging to .md files
+- Testsuits for grouping tests
 - Time measurement for Test Duration
 
 ## Installation
